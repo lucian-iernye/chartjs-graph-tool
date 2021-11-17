@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(238, 236, 236);
+}
+
+h1 {
+  font-size: 72px;
+}
+
+.btn {
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(59, 58, 58, 0.4);
+  margin-right: 5px;
+  background-color: rgba(106, 184, 28, 0.6);
+}
+
+.btn-primary {
+  background-color: rgba(106, 184, 28, 0.6);
+}
+
+.btn-secondary {
+  background-color: rgba(23, 48, 187, 0.877);
+  color: white;
+}
+
+.btn-info {
+  background-color: rgba(212, 194, 32, 0.877);
+}
+
+.btn-danger {
+  background-color: rgba(199, 53, 53, 0.877);
+  color: white;
+}
+
+.btn-light {
+  background-color: rgba(248, 244, 244, 0.877);
+}
+
+.btn-dark {
+  background-color: rgba(58, 54, 54, 0.877);
+  color: white;
+}
