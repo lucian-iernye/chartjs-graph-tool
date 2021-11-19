@@ -1,56 +1,16 @@
-export const planetChartData = {
-  type: "line",
-  data: {
-    labels: [
-      "Mercury",
-      "Venus",
-      "Earth",
-      "Mars",
-      "Jupiter",
-      "Saturn",
-      "Uranus",
-      "Neptune",
-    ],
-    datasets: [
-      {
-        label: "Number of Moons",
-        data: [0, 0, 1, 2, 79, 82, 27, 14],
-        backgroundColor: "rgba(54,73,93,.5)",
-        borderColor: "#36495d",
-        borderWidth: 3,
-      },
-      {
-        label: "Planetary Mass (relative to the Sun x 10^-6)",
-        data: [0.166, 2.081, 3.003, 0.323, 954.792, 285.886, 43.662, 51.514],
-        backgroundColor: "rgba(71, 183,132,.5)",
-        borderColor: "#47b784",
-        borderWidth: 3,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    lineTension: 1,
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            padding: 25,
-          },
-        },
-      ],
-    },
-  },
-};
+<template>
+  <canvas id="myChart"></canvas>
+</template>
 
-export default planetChartData;
+<script>
+import Chart from "chart.js/auto";
+export default {
+  name: "BarChart",
+  props: {},
 
-
-
-
-type: "line",
-      // chart data here
+  data() {
+    return {
+      type: "bar",
       chartData: {
         labels: [
           "Mercury",
@@ -65,10 +25,26 @@ type: "line",
         datasets: [
           {
             label: "This week",
+            // fill: false,
+            lineTension: 0.1,
+            // borderCapStyle: "butt",
+            // borderDash: [],
+            // borderDashOffset: 0.0,
+            // borderJoinStyle: "miter",
+            // pointBorderColor: "rgba(75,192,192,1)",
+            // pointBackgroundColor: "#fff",
+            // pointBorderWidth: 1,
+            // pointHoverRadius: 5,
+            // pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            // pointHoverBorderColor: "rgba(220,220,220,1)",
+            // pointHoverBorderWidth: 2,
+            // pointRadius: 1,
+            // pointHitRadius: 10,
             data: [0, 0, 1, 2, 79, 82, 27, 14],
             backgroundColor: "rgba(54,73,93,.5)",
             borderColor: "#36495d",
             borderWidth: 3,
+            // spanGaps: false,
           },
           {
             label: "Last week",
@@ -81,7 +57,6 @@ type: "line",
           },
         ],
       },
-      //options
       chartOptions: {
         scales: {
           yAxes: [
@@ -115,6 +90,23 @@ type: "line",
             },
           },
         },
-        responsive: false,
-        maintainAspectRatio: false,
+        responsive: true,
+        maintainAspectRatio: true,
       },
+    };
+  },
+
+  methods: {},
+
+  mounted() {
+    let canvas = document.getElementById("myChart");
+    new Chart(canvas, {
+      type: this.type,
+      data: this.chartData,
+      options: this.chartOptions,
+    });
+  },
+};
+</script>
+
+<style></style>

@@ -9,11 +9,21 @@
       <h3>Please view some chart examples below.</h3>
 
       <div class="charts">
-        <p>{{ type ? type[0].toUpperCase() + type.slice(1) : "" }} chart</p>
+        <p>
+          {{
+            chartType ? chartType[0].toUpperCase() + chartType.slice(1) : ""
+          }}
+          chart
+        </p>
         <br />
 
-        <CreateChart v-if="type === 'line'" :type="type" />
-        <!-- <CreateChart v-if="type === 'bar'" :type="getType" /> -->
+        <!-- <LineChart v-if="type === 'line'" />
+        <BarChart v-if="type === 'bar'" /> -->
+        <TestChart
+          :chartType="chartType"
+          :chartData="chartData"
+          :chartOptions="chartOptions"
+        />
 
         <!-- <LineChart
           v-if="type === 'line'"
@@ -111,17 +121,9 @@
 import Container from "@/components/Container.vue";
 
 // charts
-import CreateChart from "../components/static-charts/CreateChart.vue";
-// import LineChart from "@/components/charts/LineChart.vue";
-// import BarChart from "@/components/charts/BarChart.vue";
-// import PieChart from "@/components/charts/PieChart.vue";
-// import RadarChart from "@/components/charts/RadarChart.vue";
-// import PolarChart from "@/components/charts/PolarChart.vue";
-// import HorizontalBars from "@/components/charts/HorizontalBars.vue";
-// import ScatterChart from "@/components/charts/ScatterChart.vue";
-// import MixedChart from "@/components/charts/MixedChart.vue";
-// import BubbleChart from "@/components/charts/BubbleChart.vue";
-// import DoughnutChart from "@/components/charts/DoughnutChart.vue";
+// import LineChart from "../components/static-charts/LineChart.vue";
+// import BarChart from "../components/static-charts/BarChart.vue";
+import TestChart from "../components/static-charts/TestChart.vue";
 
 import ChartTypes from "@/components/ChartTypes.vue";
 
@@ -130,22 +132,14 @@ export default {
   components: {
     Container,
     ChartTypes,
-    CreateChart,
+    // LineChart,
     // BarChart,
-    // RadarChart,
-    // DoughnutChart,
-    // PieChart,
-    // PolarChart,
-    // HorizontalBars,
-    // ScatterChart,
-    // MixedChart,
-    // BubbleChart,
+    TestChart,
   },
 
   data() {
     return {
-      type: "line",
-      // chart data here
+      chartType: "line",
       chartData: {
         labels: [
           "Mercury",
@@ -160,10 +154,26 @@ export default {
         datasets: [
           {
             label: "This week",
+            // fill: false,
+            lineTension: 0.1,
+            // borderCapStyle: "butt",
+            // borderDash: [],
+            // borderDashOffset: 0.0,
+            // borderJoinStyle: "miter",
+            // pointBorderColor: "rgba(75,192,192,1)",
+            // pointBackgroundColor: "#fff",
+            // pointBorderWidth: 1,
+            // pointHoverRadius: 5,
+            // pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            // pointHoverBorderColor: "rgba(220,220,220,1)",
+            // pointHoverBorderWidth: 2,
+            // pointRadius: 1,
+            // pointHitRadius: 10,
             data: [0, 0, 1, 2, 79, 82, 27, 14],
             backgroundColor: "rgba(54,73,93,.5)",
             borderColor: "#36495d",
             borderWidth: 3,
+            // spanGaps: false,
           },
           {
             label: "Last week",
@@ -176,7 +186,6 @@ export default {
           },
         ],
       },
-      //options
       chartOptions: {
         scales: {
           yAxes: [
@@ -210,21 +219,17 @@ export default {
             },
           },
         },
-        responsive: false,
-        maintainAspectRatio: false,
+        responsive: true,
+        maintainAspectRatio: true,
       },
     };
   },
 
-  computed: {
-    getType() {
-      return this.type;
-    },
-  },
+  computed: {},
 
   methods: {
     updateChartType(type) {
-      this.type = type;
+      this.chartType = type;
     },
   },
 };
