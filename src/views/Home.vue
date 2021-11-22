@@ -8,102 +8,25 @@
       </h2>
       <h3>Please view some chart examples below.</h3>
 
-      <div class="charts">
+      <div class="example-charts">
         <p>
-          {{
-            chartType ? chartType[0].toUpperCase() + chartType.slice(1) : ""
-          }}
+          {{ chartType ? chartType[0].toUpperCase() + chartType.slice(1) : "" }}
           chart
         </p>
         <br />
 
-        <!-- <LineChart v-if="type === 'line'" />
-        <BarChart v-if="type === 'bar'" /> -->
-        <TestChart
-          :chartType="chartType"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-        />
-
-        <!-- <LineChart
-          v-if="type === 'line'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
-
-        <!-- <BarChart
-          v-if="type === 'bar'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
-
-        <!-- <PieChart
-          v-if="type === 'pie'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
-
-        <!-- <PolarChart
-          v-if="type === 'polar'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
-
-        <!-- <HorizontalBars
-          v-if="type === 'horizontal'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
-
-        <!-- <ScatterChart
-          v-if="type === 'scatter'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
-
-        <!-- <MixedChart
-          v-if="type === 'mixed'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
-
-        <!-- <RadarChart
-          v-if="type === 'radar'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
-
-        <!-- <DoughnutChart
-          v-if="type === 'doughnut'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
-
-        <!-- <BubbleChart
-          v-if="type === 'bubble'"
-          :chartData="chartData"
-          :chartOptions="chartOptions"
-          :width="800"
-          :height="400"
-        /> -->
+        <div class="chart-container">
+          <line-chart-static v-if="chartType === 'line'" />
+          <bar-chart-static v-if="chartType === 'bar'" />
+          <horizontal-bar-static v-if="chartType === 'horizontal'" />
+          <pie-chart-static v-if="chartType === 'pie'" />
+          <doughnut-chart-static v-if="chartType === 'doughnut'" />
+          <radar-chart-static v-if="chartType === 'radar'" />
+          <polar-chart-static v-if="chartType === 'polar'" />
+          <scatter-chart-static v-if="chartType === 'scatter'" />
+          <mixed-chart-static v-if="chartType === 'mixed'" />
+          <bubble-chart-static v-if="chartType === 'bubble'" />
+        </div>
       </div>
 
       <ChartTypes @updateChartType="updateChartType" />
@@ -112,6 +35,7 @@
         To create a new chart and to see your previouly created charts you need
         to login.
       </h3>
+      <button class="btn btn-primary new-chart-btn">Create a new chart</button>
     </div>
   </Container>
 </template>
@@ -121,20 +45,33 @@
 import Container from "@/components/Container.vue";
 
 // charts
-// import LineChart from "../components/static-charts/LineChart.vue";
-// import BarChart from "../components/static-charts/BarChart.vue";
-import TestChart from "../components/static-charts/TestChart.vue";
-
 import ChartTypes from "@/components/ChartTypes.vue";
+import LineChartStatic from "../components/static-charts/LineChartStatic.vue";
+import BarChartStatic from "../components/static-charts/BarChartStatic.vue";
+import HorizontalBarStatic from "../components/static-charts/HorizontalBarStatic.vue";
+import PieChartStatic from "../components/static-charts/PieChartStatic.vue";
+import DoughnutChartStatic from "../components/static-charts/DoughnutChartStatic.vue";
+import RadarChartStatic from "../components/static-charts/RadarChartStatic.vue";
+import PolarChartStatic from "../components/static-charts/PolarChartStatic.vue";
+import ScatterChartStatic from "../components/static-charts/ScatterChartStatic.vue";
+import MixedChartStatic from "../components/static-charts/MixedChartStatic.vue";
+import BubbleChartStatic from "../components/static-charts/BubbleChartStatic.vue";
 
 export default {
   name: "Home",
   components: {
     Container,
     ChartTypes,
-    // LineChart,
-    // BarChart,
-    TestChart,
+    LineChartStatic,
+    BarChartStatic,
+    HorizontalBarStatic,
+    PieChartStatic,
+    DoughnutChartStatic,
+    RadarChartStatic,
+    PolarChartStatic,
+    ScatterChartStatic,
+    MixedChartStatic,
+    BubbleChartStatic,
   },
 
   data() {
@@ -246,10 +183,21 @@ h3 {
   margin-top: 40px;
 }
 
-div.charts {
-  margin: 30px auto;
+.example-charts {
+  width: 750px;
   max-width: 750px;
-  max-height: 401px;
-  border: 1px solid lightgrey;
+  margin: 30px auto;
+  border: 1px solid rgba(212, 212, 212, 0.4);
+  padding: 16px;
+}
+
+.chart-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(235, 235, 235);
+}
+
+.new-chart-btn {
+  margin: 50px auto;
 }
 </style>

@@ -1,13 +1,28 @@
-<template>
-  <canvas id="myChart"></canvas>
-</template>
+options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        },
+        gridLines: {
+          display: true
+        }
+      }],
+      xAxes: [ {
+        gridLines: {
+          display: false
+        }
+      }]
+    },
+    legend: {
+      display: true
+    },
+    responsive: true,
+    maintainAspectRatio: false
+  }
 
-<script>
-import Chart from "chart.js/auto";
-export default {
-  name: "LineChart",
-  props: {},
 
+  //general
   data() {
     return {
       type: "line",
@@ -95,18 +110,3 @@ export default {
       },
     };
   },
-
-  methods: {},
-
-  mounted() {
-    let canvas = document.getElementById("myChart");
-    new Chart(canvas, {
-      type: this.type,
-      data: this.chartData,
-      options: this.chartOptions,
-    });
-  },
-};
-</script>
-
-<style lang="scss" scoped></style>

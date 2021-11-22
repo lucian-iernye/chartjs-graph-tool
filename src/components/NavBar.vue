@@ -4,6 +4,7 @@
       <li><router-link to="/">Home</router-link></li>
       <li><router-link to="/about">About</router-link></li>
       <li><router-link to="/login">Login</router-link></li>
+      <li class="new"><router-link to="/create">Create chart</router-link></li>
     </ul>
   </div>
 </template>
@@ -32,10 +33,23 @@ export default {
       a {
         font-weight: bold;
         color: #2c3e50;
+        text-decoration: none;
       }
 
       a.router-link-exact-active {
         color: #42b983;
+      }
+    }
+
+    li.new {
+      a {
+        color: #2c3e50;
+        background-color: #42b983;
+      }
+
+      a.router-link-exact-active {
+        color: #2c3e50;
+        background-color: #42b983;
       }
     }
   }
