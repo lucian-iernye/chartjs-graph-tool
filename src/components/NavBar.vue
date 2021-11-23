@@ -34,16 +34,12 @@ export default {
 
       a {
         font-weight: bold;
-        color: #ffffff;
+        color: #2c3e50;
         text-decoration: none;
-
-        &:hover {
-          border-bottom: 2px solid rgba(236, 211, 28, 1);
-        }
       }
 
       a.router-link-exact-active {
-        border-bottom: 2px solid rgba(236, 211, 28, 1);
+        color: #42b983;
       }
     }
 
