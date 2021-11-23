@@ -15,7 +15,7 @@ export default {
 <style scoped lang="scss">
 .container {
   margin: 20px auto;
-  border: 1px solid rgba(225, 225, 225, 0.7);
+  // border: 1px solid rgba(225, 225, 225, 0.7);
   width: 90%;
 }
 </style>

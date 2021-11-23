@@ -16,6 +16,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url("../styles/normalization.scss");
+
 #nav {
   margin: 16px auto;
   width: 90%;
@@ -32,12 +34,16 @@ export default {
 
       a {
         font-weight: bold;
-        color: #2c3e50;
+        color: #ffffff;
         text-decoration: none;
+
+        &:hover {
+          border-bottom: 2px solid rgba(236, 211, 28, 1);
+        }
       }
 
       a.router-link-exact-active {
-        color: #42b983;
+        border-bottom: 2px solid rgba(236, 211, 28, 1);
       }
     }
 

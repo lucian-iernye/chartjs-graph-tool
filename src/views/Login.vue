@@ -6,4 +6,6 @@
 export default {};
 </script>
 
-<style></style>
+<style>
+@import url("../styles/normalization.scss");
+</style>
